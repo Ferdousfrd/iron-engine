@@ -1,0 +1,16 @@
+# Ignore sensitive credential files
+*.env
+*.key
+*.pem
+
+# Ignore runtime logs
+logs/
+*.log
+
+# Ignore large media assets (videos, raw audio)
+data/
+*.mp4
+*.mp3
+*.wav
+*.png
+*.jpg
