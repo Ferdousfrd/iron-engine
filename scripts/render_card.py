@@ -123,10 +123,13 @@ if __name__ == "__main__":
 
     dispatch_id = str(record["id"])
     overlay_text = record["overlay_text"]
-    test_image = os.path.expanduser("~/iron-engine/data/raw/viking_base.jpg")
 
-    print(f"[RENDER] Generating social card for Dispatch UUID: {dispatch_id}...")
-    saved_path = render_dispatch_card(dispatch_id, overlay_text, test_image)
+    raw_path = os.path.expanduser(f"~/iron-engine/data/raw/{dispatch_id}_raw.jpg")
+    if not os.path.exists(raw_path):
+        raw_path = os.path.expanduser("~/iron-engine/data/raw/viking_base.jpg")
+
+    print(f"[RENDER] Compositing social card for {dispatch_id}...")
+    saved_path = render_dispatch_card(dispatch_id, overlay_text, raw_path)
     
     mark_as_rendered(conn, dispatch_id, saved_path)
     print(f"[SUCCESS] Card saved: {saved_path}")
